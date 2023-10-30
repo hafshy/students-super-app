@@ -19,5 +19,5 @@ func InitDB() {
 }
 
 func AutoMigrate() {
-	DB.AutoMigrate(&models.School{}, &models.Student{}, &models.StudentAccount{})
+	DB.AutoMigrate(&models.Student{}, &models.School{})
 }
