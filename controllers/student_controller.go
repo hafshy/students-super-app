@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"os"
 	"strconv"
 	"time"
 
@@ -87,7 +88,7 @@ func RegisterStudent(c echo.Context) error {
 	}
 	token.Claims = claims
 
-	signedToken, err := token.SignedString([]byte("secret"))
+	signedToken, err := token.SignedString([]byte(os.Getenv("JWT_SECRET_KEY")))
 	if err != nil {
 		return c.JSON(500, models.BaseResponse{
 			Status:  false,
@@ -137,7 +138,7 @@ func LoginStudent(c echo.Context) error {
 	}
 	token.Claims = claims
 
-	signedToken, err := token.SignedString([]byte("secret"))
+	signedToken, err := token.SignedString([]byte(os.Getenv("JWT_SECRET_KEY")))
 	if err != nil {
 		return c.JSON(500, models.BaseResponse{
 			Status:  false,
