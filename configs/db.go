@@ -1,6 +1,7 @@
 package configs
 
 import (
+	"github.com/hafshy/students-super-app/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -18,5 +19,5 @@ func InitDB() {
 }
 
 func AutoMigrate() {
-	DB.AutoMigrate()
+	DB.AutoMigrate(&models.School{}, &models.Student{}, &models.StudentAccount{})
 }
