@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/hafshy/students-super-app/configs"
 	"github.com/hafshy/students-super-app/routes"
@@ -14,7 +15,7 @@ func main() {
 	configs.InitDB()
 	e := echo.New()
 	routes.InitRoute(e)
-	e.Start(":8080")
+	e.Start(":" + os.Getenv("PORT"))
 	fmt.Println("Hello World!")
 }
 
